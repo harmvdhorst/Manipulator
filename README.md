@@ -9,10 +9,10 @@ Every time you want to manipulate a class you have to create a Patch file
 
 ```java
 import nl.harmvdhorst.manipulator.MethodData;
-import annotations.nl.harmvdhorst.manipulator.Inject;
-import annotations.nl.harmvdhorst.manipulator.Overwrite;
-import annotations.nl.harmvdhorst.manipulator.Patch;
-import annotations.nl.harmvdhorst.manipulator.Redirect;
+import nl.harmvdhorst.manipulator.annotations.Inject;
+import nl.harmvdhorst.manipulator.annotations.Overwrite;
+import nl.harmvdhorst.manipulator.annotations.Patch;
+import nl.harmvdhorst.manipulator.annotations.Redirect;
 
 // First we need to specify which class we want to patch
 @Patch(type = ClassToPatch.class)
