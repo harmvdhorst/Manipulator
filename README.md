@@ -1,6 +1,6 @@
 # Manipulator
 
-Manipulator is a simple-to-use annotation based bytecode manipulation library which main focus is to work with the attach api. <br><br> This library is highly inspired by the [Spongepowered Mixin](https://github.com/SpongePowered/Mixin) project. <br><br> Manipulator uses ByteBuddy under the hood.
+Manipulator is a simple-to-use annotation based bytecode manipulation library which main focus is to work with the attach api. <br><br> This library is highly inspired by the [Spongepowered Mixin](https://github.com/SpongePowered/Mixin) project. <br><br> Manipulator uses [ByteBuddy](https://github.com/raphw/byte-buddy) under the hood.
 
 <br>
 
@@ -73,3 +73,6 @@ I also have made a small Utils class where i am going to add small handy things 
 // With this method you can inject a ByteBuddy Type into the system classloader
 Utils.injectDynamicTypeIntoSystemClassloader(type);
 ```
+
+## Notice
+This library uses [ByteBuddy](https://github.com/raphw/byte-buddy) which is licenced under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
