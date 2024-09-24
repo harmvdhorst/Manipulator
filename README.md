@@ -4,6 +4,21 @@ Manipulator is a simple-to-use annotation based bytecode manipulation library wh
 
 <br>
 
+### Install
+Currently the project is hosted on my own repo, but you can also build it yourself
+```xml
+<repository>
+  <id>harmvdhorst-repo</id>
+  <url>https://repo.harmvdhorst.nl/releases</url>
+</repository>
+
+<dependency>
+    <groupId>nl.harmvdhorst</groupId>
+    <artifactId>Manipulator</artifactId>
+    <version>1.0.1-BETA</version>
+</dependency>
+```
+
 #### Usage
 Every time you want to manipulate a class you have to create a Patch file
 

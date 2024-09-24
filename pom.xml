@@ -6,13 +6,20 @@
 
     <groupId>nl.harmvdhorst</groupId>
     <artifactId>Manipulator</artifactId>
-    <version>1.0.0-BETA</version>
+    <version>1.0.1-BETA</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>harmvdhorst-repo</id>
+            <url>https://repo.harmvdhorst.nl/releases</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>

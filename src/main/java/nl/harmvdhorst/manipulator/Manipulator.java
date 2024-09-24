@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 import static net.bytebuddy.matcher.ElementMatchers.named;
+import static net.bytebuddy.matcher.ElementMatchers.takesArguments;
 
 public class Manipulator {
 
@@ -67,10 +68,12 @@ public class Manipulator {
                     for (Method method : patchClass.getMethods()) {
                         method.setAccessible(true);
 
+                        Class<?>[] args = method.getParameterTypes();
+
                         if(method.isAnnotationPresent(Overwrite.class)){
                             builder = builder.transform((overwriteBuilder, typeDescription, classLoader, javaModule, protectionDomain) ->
                                     overwriteBuilder
-                                            .method(named(method.getName()))
+                                            .method(named(method.getName()).and(takesArguments(args)))
                                             .intercept(MethodDelegation.to(patchClass))
                             );
                         }
@@ -81,7 +84,7 @@ public class Manipulator {
                             METHODS_MAP.get(at).get(patchName).putIfAbsent(method.getAnnotation(Inject.class).method(), method);
                             builder = builder.transform((injectBuilder, typeDescription, classLoader, javaModule, protectionDomain) ->
                                     injectBuilder
-                                            .visit(advice.on(named(method.getAnnotation(Inject.class).method())))
+                                            .visit(advice.on(named(method.getAnnotation(Inject.class).method()).and(takesArguments(args))))
                             );
                         }
                         if(method.isAnnotationPresent(Redirect.class)){
@@ -89,7 +92,7 @@ public class Manipulator {
                                     {
                                         try {
                                             return overwriteBuilder
-                                                    .method(named(method.getName()))
+                                                    .method(named(method.getName()).and(takesArguments(args)))
                                                     .intercept(FixedValue.value(method.invoke(null)));
                                         } catch (IllegalAccessException | InvocationTargetException e) {
                                             throw new RuntimeException(e);
